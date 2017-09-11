@@ -12,7 +12,7 @@ A small game written in [lua](https://www.lua.org/) using the [Love2D](https://l
 
 **Music** - TheLawyer [Bandcamp]( https://echodjek.bandcamp.com/)/[Twitter](https://twitter.com/echodjek)
 
-##Controls
+### Controls
 
 WASD/Arrow Keys
 f3 for help/info on screen
