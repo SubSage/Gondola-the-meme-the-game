@@ -3,6 +3,7 @@
 A small game written in [lua](https://www.lua.org/) using the [Love2D](https://love2d.org/) engine. Appreciate the world around, go slowly and explore the story the environment has to tell.
 
 ### The Team:
+
 **Designers** - Sage, Ecto, TheLawyer
 
 **Programming** - Sage: [Github](https://subsage.github.io/)/[Twitter](twitter.com/Sub_sage)
@@ -12,6 +13,7 @@ A small game written in [lua](https://www.lua.org/) using the [Love2D](https://l
 **Music** - TheLawyer [Bandcamp]( https://echodjek.bandcamp.com/)/[Twitter](https://twitter.com/echodjek)
 
 ##Controls
+
 WASD/Arrow Keys
 f3 for help/info on screen
 f12 to take a screenshot
