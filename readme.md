@@ -14,7 +14,14 @@ A small game written in [lua](https://www.lua.org/) using the [Love2D](https://l
 
 ### Controls
 
-WASD/Arrow Keys
-f3 for help/info on screen
-f12 to take a screenshot
-esc to exit the game
+WASD/Arrow Keys for movement
+
+
+F3 for help/info on screen
+
+
+F12 to take a screenshot
+
+
+ESC to exit the game
+
