@@ -1,6 +1,6 @@
 
 local scene_ocean = {
-bg = love.graphics.newImage('assets/backgrounds/ocean_bottom_1_1.png'),
+bg = love.graphics.newImage('assets/backgrounds/ocean_bottom_1.png'),
 speed = 40,
 gondola={x=30,y=880, image = love.graphics.newImage('assets/gondola.png')},
 camera={x=30,y=850},
