@@ -9,6 +9,11 @@ status=''
 
 scene_ocean_4.quad = love.graphics.newQuad(0, 0, 1920, 1080, scene_ocean_4.bg:getDimensions())
 
+scene_ocean_4.init = function()
+  scene_info.name = 'Ocean 4'
+  gondola = {x=30, y=700}
+end
+
 scene_ocean_4.draw = function(canvas)
   canvas:renderTo(function()
     love.graphics.push()
@@ -17,14 +22,6 @@ scene_ocean_4.draw = function(canvas)
     love.graphics.draw(scene_ocean_4.bg, scene_ocean_4.quad,0,0)
     love.graphics.draw(scene_ocean_4.gondola.image, scene_ocean_4.gondola.x,scene_ocean_4.gondola.y, 0, .15)
     love.graphics.pop()
-
-    if (infodump) then
-      love.graphics.push()
-      love.graphics.print('scene_ocean_4',0,0)
-      love.graphics.print('x '..scene_ocean_4.gondola.x,0,15)
-      love.graphics.print('y '..scene_ocean_4.gondola.y,0,30)
-      love.graphics.pop()
-    end
   end)
 end
 

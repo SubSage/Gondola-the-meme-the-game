@@ -10,6 +10,11 @@ songplaying = false
 
 scene_ocean_fall.quad = love.graphics.newQuad(0, 0, 1920, 1080, scene_ocean_fall.bg:getDimensions())
 
+scene_ocean_fall.init = function()
+  scene_info.name = 'Cave'
+  gondola = {x=50,y=20}
+end
+
 scene_ocean_fall.draw = function(canvas)
   canvas:renderTo(function()
     love.graphics.push()
@@ -18,14 +23,6 @@ scene_ocean_fall.draw = function(canvas)
     love.graphics.draw(scene_ocean_fall.bg, scene_ocean_fall.quad,0,0)
     love.graphics.draw(scene_ocean_fall.gondola.image, scene_ocean_fall.gondola.x,scene_ocean_fall.gondola.y, 0, .25)
     love.graphics.pop()
-
-    if (infodump) then
-      love.graphics.push()
-      love.graphics.print('scene_ocean_fall',0,0)
-      love.graphics.print('x '..scene_ocean_fall.gondola.x,0,15)
-      love.graphics.print('y '..scene_ocean_fall.gondola.y,0,30)
-      love.graphics.pop()
-    end
   end)
 end
 
@@ -52,7 +49,7 @@ scene_ocean_fall.update=function(dt)
       music[1]:pause()
     end
     love.audio.setVolume(1)
-    music[2] = love.audio.newSource('assets//audio//steelguitarparts//oceanenteringwatersteelguitar.wav')
+    music[2] = love.audio.newSource('assets/audio/Ocean Steel Guitar Parts/oceanenteringwatersteelguitar.ogg')
     music[2]:play()
   end
   if(music[3]:isPlaying() == false) then

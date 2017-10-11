@@ -8,6 +8,11 @@ status=''
 
 scene_space.quad = love.graphics.newQuad(0, 0, 1920, 1080, scene_space.bg:getDimensions())
 
+scene_space.init = function()
+  scene_info.name = 'Space'
+  gondola = {x=30,y=700}
+end
+
 scene_space.draw = function(canvas)
   canvas:renderTo(function()
     love.graphics.push()
@@ -16,14 +21,6 @@ scene_space.draw = function(canvas)
     love.graphics.draw(scene_space.bg, scene_space.quad,0,0)
     love.graphics.draw(scene_space.gondola.image, scene_space.gondola.x,scene_space.gondola.y, 0, .15)
     love.graphics.pop()
-
-    if (infodump) then
-      love.graphics.push()
-      love.graphics.print('scene_space',0,0)
-      love.graphics.print('x '..scene_space.gondola.x,0,15)
-      love.graphics.print('y '..scene_space.gondola.y,0,30)
-      love.graphics.pop()
-    end
   end)
 end
 

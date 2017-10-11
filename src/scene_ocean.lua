@@ -9,6 +9,11 @@ status=''
 
 scene_ocean.quad = love.graphics.newQuad(0, 0, 1920, 1080, scene_ocean.bg:getDimensions())
 
+scene_ocean.init = function()
+  scene_info.name = 'Ocean 1'
+  gondola = {x=30, y=880}
+end
+
 scene_ocean.draw = function(canvas)
   canvas:renderTo(function()
     love.graphics.push()
@@ -17,14 +22,6 @@ scene_ocean.draw = function(canvas)
     love.graphics.draw(scene_ocean.bg, scene_ocean.quad,0,0)
     love.graphics.draw(scene_ocean.gondola.image, scene_ocean.gondola.x,scene_ocean.gondola.y, 0, .8)
     love.graphics.pop()
-
-    if (infodump) then
-      love.graphics.push()
-      love.graphics.print('scene_ocean',0,0)
-      love.graphics.print('x '..scene_ocean.gondola.x,0,15)
-      love.graphics.print('y '..scene_ocean.gondola.y,0,30)
-      love.graphics.pop()
-    end
   end)
 end
 
@@ -55,9 +52,8 @@ scene_ocean.update=function(dt)
     nextscene=scene7
     scene_ocean.gondola.x = 780
   end
-
-  if(music[5]:isPlaying())then
-    music[5]:pause()
+  if(music[2]:isPlaying()) then
+    music[2]:pause()
   end
   scene_ocean.quad:setViewport(scene_ocean.gondola.x *10, scene_ocean.gondola.y, vpw, vph)
 end
