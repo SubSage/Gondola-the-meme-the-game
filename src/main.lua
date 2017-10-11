@@ -1,11 +1,11 @@
-version = 'CLEAN-UP 0.0.1'
+version = 'CLEAN-UP 0.0.2'
 debug = false
 
 scene_info = {
   name = '',
   bg = '',
   speed = 200,
-  gondola = { x = 0, y = 0, image = love.graphics.newImage('assets/gondola.png') },
+  gondola = { x = 0, y = 0, image = love.graphics.newImage('assets/animations/basic_idle.png') },
   status = ''
 }
 

@@ -1,17 +1,15 @@
 
-local scene_ocean_4 = {
-bg = love.graphics.newImage('assets/backgrounds/ocean_bottom_2.png'),
-speed = 10,
-gondola={x=30,y=700, image = love.graphics.newImage('assets/gondola.png')},
-camera={x=30,y=820},
-status=''
-}
-
-scene_ocean_4.quad = love.graphics.newQuad(0, 0, 1920, 1080, scene_ocean_4.bg:getDimensions())
+local scene_ocean_4 = {}
 
 scene_ocean_4.init = function()
-  scene_info.name = 'Ocean 4'
-  gondola = {x=30, y=700}
+  scene_info.name = 'Ocean 3'
+  scene_info.bg = love.graphics.newImage('assets/backgrounds/ocean_bottom_2.png')
+  scene_info.gondola.x = 30
+  scene_info.gondola.y = 700
+  scene_info.gondola.speed = 10
+  scene_info.gondola.image = love.graphics.newImage('assets/gondola.png')
+
+  scene_info.quad = love.graphics.newQuad(0, 0, 1920, 1080, scene_info.bg:getDimensions())
 end
 
 scene_ocean_4.draw = function(canvas)
@@ -19,40 +17,40 @@ scene_ocean_4.draw = function(canvas)
     love.graphics.push()
     love.graphics.clear()
 
-    love.graphics.draw(scene_ocean_4.bg, scene_ocean_4.quad,0,0)
-    love.graphics.draw(scene_ocean_4.gondola.image, scene_ocean_4.gondola.x,scene_ocean_4.gondola.y, 0, .15)
+    love.graphics.draw(scene_info.bg, scene_info.quad,0,0)
+    love.graphics.draw(scene_info.gondola.image, scene_info.gondola.x,scene_info.gondola.y, 0, .15)
     love.graphics.pop()
   end)
 end
 
 scene_ocean_4.update=function(dt)
 
-  local vpx,vpy,vpw,vph = scene_ocean_4.quad:getViewport()
+  local vpx,vpy,vpw,vph = scene_info.quad:getViewport()
   if love.keyboard.isDown('up', 'w') then
-    scene_ocean_4.gondola.y = scene_ocean_4.gondola.y - scene_ocean_4.speed * dt
+    scene_info.gondola.y = scene_info.gondola.y - scene_info.speed * dt
   elseif love.keyboard.isDown('down', 's') then
-    scene_ocean_4.gondola.y = scene_ocean_4.gondola.y + scene_ocean_4.speed * dt
+    scene_info.gondola.y = scene_info.gondola.y + scene_info.speed * dt
   end
   if love.keyboard.isDown('left', 'a') then
-    scene_ocean_4.gondola.x = scene_ocean_4.gondola.x - scene_ocean_4.speed * dt
+    scene_info.gondola.x = scene_info.gondola.x - scene_info.speed * dt
   elseif love.keyboard.isDown('right', 'd') then
-    scene_ocean_4.gondola.x = scene_ocean_4.gondola.x + scene_ocean_4.speed * dt
+    scene_info.gondola.x = scene_info.gondola.x + scene_info.speed * dt
   end
 
-  if(scene_ocean_4.gondola.y > 900) then
-    scene_ocean_4.gondola.y = 900
+  if(scene_info.gondola.y > 900) then
+    scene_info.gondola.y = 900
   end
-  if(scene_ocean_4.gondola.y < 200) then
-    scene_ocean_4.gondola.y = 200
+  if(scene_info.gondola.y < 200) then
+    scene_info.gondola.y = 200
   end
-  if(scene_ocean_4.gondola.x < 10) then
+  if(scene_info.gondola.x < 10) then
     nextscene=scene8
   end
-  if(scene_ocean_4.gondola.x>800) then
+  if(scene_info.gondola.x>800) then
     nextscene=scene11
-    scene_ocean_4.gondola.x = 780
+    scene_info.gondola.x = 780
   end
-  scene_ocean_4.quad:setViewport(scene_ocean_4.gondola.x *5, scene_ocean_4.gondola.y, vpw, vph)
+  scene_info.quad:setViewport(scene_info.gondola.x *5, scene_info.gondola.y, vpw, vph)
 end
 
 return scene_ocean_4
