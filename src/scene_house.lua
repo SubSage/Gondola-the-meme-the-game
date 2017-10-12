@@ -9,7 +9,7 @@ scene_house.init = function()
   scene_info.bg = love.graphics.newImage('assets/backgrounds/cliff_house.png')
   scene_info.gondola.x = 687
   scene_info.gondola.y = 750
-  scene_info.gondola.image = love.graphics.newImage('assets/animations/basic_idle.png') }
+  scene_info.gondola.image = love.graphics.newImage('assets/animations/basic_idle.png') 
 
   scene_info.quad = love.graphics.newQuad(0, 0, 1920, 1080, scene_info.bg:getDimensions())
 end
