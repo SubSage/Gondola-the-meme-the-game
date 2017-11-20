@@ -36,7 +36,7 @@ scene_ocean_fall.update=function(dt)
 
   scene_info.gondola.y = scene_info.gondola.y + scene_info.speed * dt
   if(scene_info.gondola.y >= 1400) then
-    nextscene = scene6
+    next_scene = scene6
   end
   if(scene_info.gondola.x <= 50 ) then
     scene_info.gondola.x = 50

@@ -1,8 +1,8 @@
 
 local transition = {}
 
-transition.draw = function(nextscene)
-	nextscene.init()
+transition.draw = function(next_scene)
+	next_scene.init()
 end
 
 return transition

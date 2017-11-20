@@ -56,7 +56,7 @@ scene_house.update=function(dt)
     scene_info.gondola.y = scene_info.gondola.y + dt * scene_info.speed
     if(scene_info.gondola.y > 900) then
       scene_house.percentage = 0
-      nextscene = scene4
+      next_scene = scene4
     end
   end
 

@@ -44,10 +44,10 @@ scene_ocean.update=function(dt)
     scene_info.gondola.y = 200
   end
   if(scene_info.gondola.x < 10) then
-    nextscene=scene10
+    next_scene=scene10
   end
   if(scene_info.gondola.x>800) then
-    nextscene=scene7
+    next_scene=scene7
     scene_info.gondola.x = 780
   end
   if(music[2]:isPlaying()) then

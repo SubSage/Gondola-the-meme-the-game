@@ -38,10 +38,10 @@ scene_cave.update=function(dt)
   scene_info.quad:setViewport(scene_info.camera.x, scene_info.camera.y, vpw, vph)
 
   if(scene_info.gondola.x <=10) then
-    nextscene = scene3
+    next_scene = scene3
   end
   if(scene_info.gondola.x >1550) then
-    nextscene = scene6
+    next_scene = scene6
   end
 
   if(music[2]:isPlaying()==false)then

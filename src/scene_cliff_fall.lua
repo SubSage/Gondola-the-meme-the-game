@@ -34,7 +34,7 @@ scene_cliff.update=function(dt)
 
   scene_info.gondola.y = scene_info.gondola.y + scene_info.speed * dt *.9
   if(scene_info.gondola.y >= 1400) then
-    nextscene = scene5
+    next_scene = scene5
     scene_info.gondola.y =10
   end
   if (music[1]:isPlaying())then

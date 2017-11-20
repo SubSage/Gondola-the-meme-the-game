@@ -44,10 +44,10 @@ scene_ocean_3.update=function(dt)
     scene_info.gondola.y = 200
   end
   if(scene_info.gondola.x < 10) then
-    nextscene=scene7
+    next_scene=scene7
   end
   if(scene_info.gondola.x>820) then
-    nextscene=scene9
+    next_scene=scene9
     scene_info.gondola.x = 780
   end
   scene_info.quad:setViewport(scene_info.gondola.x *10, scene_info.gondola.y, vpw, vph)
