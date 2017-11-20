@@ -25,33 +25,26 @@ scene_space.draw = function(canvas)
 end
 
 scene_space.update=function(dt)
-
   local vpx,vpy,vpw,vph = scene_info.quad:getViewport()
-  if love.keyboard.isDown('up', 'w') then
-    scene_info.gondola.y = scene_info.gondola.y - scene_info.speed * dt
-  elseif love.keyboard.isDown('down', 's') then
-    scene_info.gondola.y = scene_info.gondola.y + scene_info.speed * dt
-  end
-  if love.keyboard.isDown('left', 'a') then
-    scene_info.gondola.x = scene_info.gondola.x - scene_info.speed * dt
-  elseif love.keyboard.isDown('right', 'd') then
-    scene_info.gondola.x = scene_info.gondola.x + scene_info.speed * dt
-  end
 
-  if(scene_info.gondola.y > 900) then
+  if scene_info.gondola.y > 900  then
     scene_info.gondola.y = 900
   end
-  if(scene_info.gondola.y < 200) then
+
+  if scene_info.gondola.y < 200  then
     scene_info.gondola.y = 200
   end
-  if(scene_info.gondola.x < 10) then
-    next_scene=scene10
+
+  if scene_info.gondola.x < 10  then
+    next_scene = scene10
   end
-  if(scene_info.gondola.x>800) then
-    next_scene=scene3
+
+  if scene_info.gondola.x > 800 then
+    next_scene =scene3
     scene_info.gondola.x = 780
   end
-  scene_info.quad:setViewport(scene_info.gondola.x *5, scene_info.gondola.y, vpw, vph)
+
+  scene_info.quad:setViewport(scene_info.gondola.x * 5, scene_info.gondola.y, vpw, vph)
 end
 
 return scene_space

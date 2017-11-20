@@ -7,8 +7,18 @@ scene_cave.init = function()
   scene_info.camera = {x=3000, y=820}
   scene_info.gondola.x = 1500
   scene_info.gondola.y = 750
-  scene_info.gondola.speed = 200
+  scene_info.speed = 200
+  scene_info.gravity = 200
+  scene_info.jumping = false
   scene_info.gondola.image = love.graphics.newImage('assets/gondola.png')
+
+  if music[2]:isPlaying()==false then
+    music[2]:play()
+  end
+  if music[3]:isPlaying()==true then
+    music[3]:pause()
+    music[4]:pause()
+  end
 
   scene_info.quad = love.graphics.newQuad(0, 0, 1920, 1080, scene_info.bg:getDimensions())
 end
@@ -25,32 +35,17 @@ scene_cave.draw = function(canvas)
 end
 
 scene_cave.update=function(dt)
-
   local vpx,vpy,vpw,vph = scene_info.quad:getViewport()
 
-  if love.keyboard.isDown('left', 'a') then
-    scene_info.gondola.x = scene_info.gondola.x - scene_info.speed * dt/2
-    scene_info.camera.x = scene_info.camera.x - scene_info.speed * dt
-  elseif love.keyboard.isDown('right', 'd') then
-    scene_info.gondola.x = scene_info.gondola.x + scene_info.speed * dt/2
-    scene_info.camera.x = scene_info.camera.x + scene_info.speed * dt
-  end
-  scene_info.quad:setViewport(scene_info.camera.x, scene_info.camera.y, vpw, vph)
 
-  if(scene_info.gondola.x <=10) then
+  if scene_info.gondola.x <= 10 then
     next_scene = scene3
   end
-  if(scene_info.gondola.x >1550) then
+  if scene_info.gondola.x > 1550 then
     next_scene = scene6
   end
 
-  if(music[2]:isPlaying()==false)then
-    music[2]:play()
-  end
-  if(music[3]:isPlaying()==true)then
-    music[3]:pause()
-    music[4]:pause()
-  end
+  scene_info.quad:setViewport(scene_info.camera.x, scene_info.camera.y, vpw, vph)
 end
 
 return scene_cave

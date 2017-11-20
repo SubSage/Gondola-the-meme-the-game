@@ -6,6 +6,8 @@ scene_info = {
   name = '',
   bg = '',
   speed = 200,
+  gravity = 200,
+  jumping = false,
   gondola = { x = 0, y = 0, image = love.graphics.newImage('assets/animations/basic_idle.png') },
   status = '',
   debug = false
@@ -14,7 +16,7 @@ scene_info = {
 anim8 = require 'anim8'
 scene2 = require 'scene_ocean'
 scene_house = require 'scene_house'
-scene4 = require 'scene_cliff_fall'
+scene_fall = require 'scene_cliff_fall'
 scene5 = require 'scene_ocean_fall'
 scene6 = require 'scene_ocean'
 scene7 = require 'scene_ocean_2'
@@ -55,10 +57,27 @@ end
 
 function love.update(dt)
   --need to check status of scene for transition state
-  if(next_scene ~= scene) then
+  if next_scene ~= scene then
     transition.draw(next_scene)
     scene = next_scene
   end
+
+  if love.keyboard.isDown('left', 'a') then
+    scene_info.gondola.x = scene_info.gondola.x - scene_info.speed * dt/2
+  end
+
+  if love.keyboard.isDown('right', 'd') then
+    scene_info.gondola.x = scene_info.gondola.x + scene_info.speed * dt/2
+  end
+
+  if love.keyboard.isDown('up', 'w') and scene_info.jumping then
+    scene_info.gondola.y = scene_info.gondola.y - scene_info.gravity * dt
+  end
+
+  if love.keyboard.isDown('down', 's') and scene_info.jumping then
+    scene_info.gondola.y = scene_info.gondola.y + scene_info.gravity * dt
+  end
+
   scene.update(dt)
 end
 
@@ -109,18 +128,18 @@ function love.keypressed(k)
   --Debug
   if k == 'q' then
     if scene_info.debug == true then
-      scene_info.debug = false
+      scene_info.debug = not scene_info.debug
     else
-      scene_info.debug = true
+      scene_info.debug = not scene_info.debug
     end
   end
 
   if scene_info.debug == true then
     if k == 'f1' then
-      next_scene = scene3
+      next_scene = scene_house
     end
     if k == 'f2' then
-      next_scene = scene4
+      next_scene = scene_fall
     end
     if k == 'f3' then
       next_scene = scene5
