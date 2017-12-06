@@ -1,21 +1,10 @@
 anim8 = require('lib.anim8')
+scene_config = require('scene_info')
+transition = require('transition')
 
-canvas = love.graphics.newCanvas(1920, 1080)
-
-scene_info = {
-  name = '',
-  bg = '',
-  speed = 200,
-  gravity = 200,
-  jumping = false,
-  gondola = { x = 0, y = 0, image = love.graphics.newImage('assets/animations/basic_idle.png') },
-  status = '',
-  debug = false
-}
-
-scene2 = require 'worlds.World1.scene_ocean'
 scene_house = require 'worlds.World1.scene_house'
 scene_fall = require 'worlds.World1.scene_cliff_fall'
+scene2 = require 'worlds.World1.scene_ocean'
 scene5 = require 'worlds.World1.scene_ocean_fall'
 scene6 = require 'worlds.World1.scene_ocean'
 scene7 = require 'worlds.World1.scene_ocean_2'
@@ -23,9 +12,21 @@ scene8 = require 'worlds.World1.scene_ocean_3'
 scene9 = require 'worlds.World1.scene_ocean_4'
 scene10 = require 'worlds.World1.scene_ocean_cave'
 scene11 = require 'worlds.World1.scene_space'
-transition = require 'transition'
 
-music={
+world = {
+  scene_house,
+  scene_fall,
+  scene2,
+  scene5,
+  scene6,
+  scene7,
+  scene8,
+  scene9,
+  scene10,
+  scene11
+}
+
+music = {
   love.audio.newSource('assets/audio/Starting House/housemusicpart1.ogg'),
   love.audio.newSource('assets/audio/Cave Music/cavesong.ogg'),
   love.audio.newSource('assets/audio/Backing Tracks Ocean/oceanbackingguitarloop.ogg'),
@@ -37,16 +38,16 @@ music[4]:setLooping(true)
 music[3]:setVolume(.5)
 music[4]:setVolume(.5)
 
-scene = scene_house
-next_scene = scene_house
+local current_scene = 1
+local scene, next_scene = world[current_scene], world[current_scene]
+
+canvas = love.graphics.newCanvas(1920, 1080)
 
 function love.load()
   love.window.setMode(1920, 1080, {fullscreen=false, vsync=true})
   love.graphics.setDefaultFilter('nearest', 'nearest')
   music[1]:play()
 
-  --transition.draw(scene, scene2, 'x')
-  --collectgarbage('collect')
   scene.init()
 end
 
@@ -110,52 +111,31 @@ function drawDebug()
     love.graphics.pop()
 end
 
---Button presses Button presses, not hold
-function love.keypressed(k)
+function love.keypressed(key, scancode, isrepeat)
 
-  if k=='escape' then love.event.quit() end
+  if key=='escape' then love.event.quit() end
 
-  if k=='f12' then
+  if key=='f12' then
     local screenshot = love.graphics.newScreenshot();
       screenshot:encode('png', os.time() .. '.png');
   end
 
-  --Debug
-  if k == 'q' then
-    if scene_info.debug == true then
-      scene_info.debug = not scene_info.debug
-    else
-      scene_info.debug = not scene_info.debug
-    end
+  if key == 'q' then
+    scene_info.debug = not scene_info.debug
   end
 
-  if scene_info.debug == true then
-    if k == 'f1' then
-      next_scene = scene_house
+  if scene_info.debug then
+    if key == 'f1' then
+      if current_scene > 2 then
+        current_scene = current_scene + 1
+      end
+      next_scene = world[current_scene]
     end
-    if k == 'f2' then
-      next_scene = scene_fall
-    end
-    if k == 'f3' then
-      next_scene = scene5
-    end
-    if k == 'f4' then
-      next_scene = scene6
-    end
-    if k == 'f5' then
-      next_scene = scene7
-    end
-    if k == 'f6' then
-      next_scene = scene8
-    end
-    if k == 'f7' then
-      next_scene = scene9
-    end
-    if k == 'f8' then
-      next_scene = scene10
-    end
-    if k == 'f9' then
-      next_scene = scene11
+    if key == 'f2' then
+      if current_scene < table.maxn(world) then
+        current_scene = current_scene + 1
+      end
+      next_scene = world[current_scene]
     end
   end
 end
