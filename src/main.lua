@@ -1,3 +1,5 @@
+anim8 = require('lib.anim8')
+
 canvas = love.graphics.newCanvas(1920, 1080)
 
 scene_info = {
@@ -11,17 +13,16 @@ scene_info = {
   debug = false
 }
 
-anim8 = require 'anim8'
-scene2 = require 'scene_ocean'
-scene_house = require 'scene_house'
-scene_fall = require 'scene_cliff_fall'
-scene5 = require 'scene_ocean_fall'
-scene6 = require 'scene_ocean'
-scene7 = require 'scene_ocean_2'
-scene8 = require 'scene_ocean_3'
-scene9 = require 'scene_ocean_4'
-scene10 = require 'scene_ocean_cave'
-scene11 = require 'scene_space'
+scene2 = require 'worlds.World1.scene_ocean'
+scene_house = require 'worlds.World1.scene_house'
+scene_fall = require 'worlds.World1.scene_cliff_fall'
+scene5 = require 'worlds.World1.scene_ocean_fall'
+scene6 = require 'worlds.World1.scene_ocean'
+scene7 = require 'worlds.World1.scene_ocean_2'
+scene8 = require 'worlds.World1.scene_ocean_3'
+scene9 = require 'worlds.World1.scene_ocean_4'
+scene10 = require 'worlds.World1.scene_ocean_cave'
+scene11 = require 'worlds.World1.scene_space'
 transition = require 'transition'
 
 music={
@@ -38,10 +39,6 @@ music[4]:setVolume(.5)
 
 scene = scene_house
 next_scene = scene_house
-
-love.window.setTitle('Gondolic Sensation ' .. version)
-love.filesystem.setIdentity('Gondolic Sensation ' .. version);
-
 
 function love.load()
   love.window.setMode(1920, 1080, {fullscreen=false, vsync=true})

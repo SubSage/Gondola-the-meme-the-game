@@ -1,7 +1,7 @@
 local PROJECT_TITLE = "Gondolic Sensations"
 
 local PROJECT_VERSION = {
-  name = CLEAN-UP,
+  name = 'CLEAN-UP',
   major = 0,
   minor = 0,
   patch = 12
