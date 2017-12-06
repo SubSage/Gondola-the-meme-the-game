@@ -1,24 +1,33 @@
-
 local scene_house = {}
 
-scene_house.init = function()
-  scene_info.name = 'House'
-  scene_info.bg = love.graphics.newImage('assets/backgrounds/cliff_house.png')
-  scene_info.gondola.x = 687
-  scene_info.gondola.y = 750
-  scene_info.gondola.speed = 200
-  scene_info.gravity = 200
-  scene_info.jumping = false
-  scene_info.gondola.image = love.graphics.newImage('assets/animations/basic_idle.png') 
+function scene_house.init()
+  scene_info = {
+    name = 'House',
+    quad = '',
+    bg = love.graphics.newImage('assets/backgrounds/cliff_house.png'),
+    speed = 200,
+    gravity = 200,
+    jumping = false,
+    gondola = {
+      x = 687,
+      y = 750,
+      image = love.graphics.newImage('assets/animations/basic_idle.png'),
+      g = '',
+      animation = ''
+    },
+    status = '',
+
+    debug = false
+  }
 
   scene_info.quad = love.graphics.newQuad(0, 0, 1920, 1080, scene_info.bg:getDimensions())
+
+  scene_info.gondola.g =  anim8.newGrid(78, 220, scene_info.gondola.image:getWidth(), scene_info.gondola.image:getHeight())
+  scene_info.gondola.animation = anim8.newAnimation(scene_info.gondola.g('1-4',1), 0.25)
 end
 
-scene_info.gondola.g =  anim8.newGrid(78, 220, scene_info.gondola.image:getWidth(), scene_info.gondola.image:getHeight())
-scene_info.gondola.animation = anim8.newAnimation(scene_info.gondola.g('1-4',1), 0.25)
-
-scene_house.draw = function(canvas)
-  canvas:renderTo(function()
+function scene_house.draw(canvas)
+canvas:renderTo(function()
     love.graphics.push()
     love.graphics.clear()
 
@@ -30,7 +39,7 @@ scene_house.draw = function(canvas)
   end)
 end
 
-scene_house.update=function(dt)
+function scene_house.update(dt)
   scene_info.gondola.animation:update(dt)
   local vpx,vpy,vpw,vph = scene_info.quad:getViewport()
 
