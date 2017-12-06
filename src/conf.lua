@@ -1,14 +1,17 @@
 local PROJECT_TITLE = "Gondolic Sensations"
 
-local PROJECT_IDENTITY = "rmcode_otr"
-
-local PROJECT_VERSION = require('version')
+local PROJECT_VERSION = {
+  name = CLEAN-UP,
+  major = 0,
+  minor = 0,
+  patch = 12
+}
 
 local LOVE_VERSION = "0.10.2"
 
 function love.conf(t)
   t.identity = nil
-  t.version = "0.10.2"
+  t.version = LOVE_VERSION
   t.console = true
   t.accelerometerjoystick = true
   t.externalstorage = false

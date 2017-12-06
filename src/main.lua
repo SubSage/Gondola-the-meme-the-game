@@ -1,5 +1,3 @@
-version = 'CLEAN-UP 0.0.3'
-
 canvas = love.graphics.newCanvas(1920, 1080)
 
 scene_info = {
